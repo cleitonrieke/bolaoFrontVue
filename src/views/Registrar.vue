@@ -19,45 +19,41 @@ let exibirRegistro = ref(true)
 function trataBotao(valor){
     console.log(`clicado no numero ${valor}`)
 
-    if (this.primario[valor -1]){
+    if (primario.value[valor -1]){
       if (qtdNumeros === 6){
         alert('Você já selecionou 6 números!')
         return false
       }
-      this.primario[valor - 1] = false 
-      this.qtdNumeros++
-      this.numerosSelecionados.push(valor)
+      primario.value[valor - 1] = false 
+      qtdNumeros++
+      numerosSelecionados.push(valor)
     }    
     else {
-      this.primario[valor - 1] = true
-      this.qtdNumeros--
-      this.numerosSelecionados.pop(valor)
+      primario.value[valor - 1] = true
+      qtdNumeros--
+      numerosSelecionados.pop(valor)
     }
 }
 
-function registrar(){
-  console.log('teste')
-  console.log(this.campoNome)
-  if (this.qtdNumeros < 6){
+function registrar(){  
+  if (qtdNumeros < 6){
     alert('Selecione 6 Dezenas do Cartão para poder Registrar!')
     return false
-  }
-  if (this.campoNome.value.trim() === ""){
+  }  
+  if (campoNome.value.value.trim() === ""){
     alert('Favor informar o nome do Participante!')
-    this.campoNome.select()
+    campoNome.value.select()
     return false
   }
-  if (!this.checkAceite.checked){
+  if (!checkAceite.value.checked){
     alert('Favor aceitar a participação no Bolão Mega Brothers!')
-    this.checkAceite.select()
+    checkAceite.value.select()
     return false
-  }
-  console.log(this.numerosSelecionados.sort())
-  const bolao = new Bolao(this.campoNome.value, this.numerosSelecionados.sort().toString());
-  console.log(bolao);
+  }  
+  const bolao = new Bolao(campoNome.value.value, numerosSelecionados.sort().toString());  
+  console.log(bolao)
   http.post("/bolao", bolao);
-  this.exibirRegistro = false
-  console.log('agora é falso o exibir Registro')
+  exibirRegistro.value = false  
 }
 </script>
 
@@ -257,6 +253,20 @@ function registrar(){
         <div class="col-8 offset-md-2">
           <button type="button" class="btn btn-success" @click="registrar()">Entrar no Bolão!</button>
         </div>        
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+        <div class="col-8 offset-md-2">
+            <router-link to="/dashboard">Dashboard</router-link>
+        </div>
     </div>
   </div>
   <div class="container" v-else>

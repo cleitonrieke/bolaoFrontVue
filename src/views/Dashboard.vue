@@ -16,22 +16,26 @@ const initialize = (participantes) => {
 initialize(participantes)
 </script>
 <template>
-    
-        <table class="table table-striped">
-            <thead>
-                <tr class="table-dark">
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>Números</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(item, index) in participantes">
-                    <td>{{  (index+1) }}</td>
-                    <td>{{ item.nome }}</td>
-                    <td>{{ item.numeros }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row">            
+            <table class="table table-striped">
+                <thead>
+                    <tr class="table-dark">
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Números</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in participantes">
+                        <td>{{  (index+1) }}</td>
+                        <td>{{ item.nome }}</td>
+                        <td>{{ item.numeros }}</td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+        <div class="row">
+
+        </div>
     
 </template>
