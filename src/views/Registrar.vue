@@ -302,6 +302,11 @@ function registrar(){
               <router-link to="/validarresultado">Validar Resultado</router-link>
           </div>
       </div>
+      <div class="row">
+          <div class="col-8 offset-md-2">
+              <router-link to="/validarjackpot">Validar Jackpot</router-link>
+          </div>
+      </div>
     </div>
   </div>
   <div class="container" v-else>
